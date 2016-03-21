@@ -1,0 +1,11 @@
+<div class="calendar">
+    <h1>Calendar</h1>
+    <img *ngIf="!calendarItems" src="resources/loading.gif" />
+    <div *ngIf="calendarItems && item" *ngFor="#item of calendarItems" class="row calendarItem">
+        <div class="col-md-4" style="text-align:left">{{item.title}}</div>
+        <div class="col-md-2">{{item.pubdate | date:'EEEE'}} <p class="opague">({{item.pubdate | date:'MMM d'}})</p></div>
+        <div class="col-md-2" *ngIf="!item.allDay">{{item.pubdate | date:'H:m'}}</div>
+        <div class="col-md-4" style="text-align:right">{{item.location}}</div>
+    </div>
+</div>
+

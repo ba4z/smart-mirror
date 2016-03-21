@@ -1,0 +1,12 @@
+<h3 style="padding-bottom:12px">Traffic Information</h3>
+<div style="width:250px;padding:10px">
+    <img *ngIf="!cbcTraffic" src="resources/loading.gif" />
+    <div class="row" *ngIf="cbcTraffic" style="padding-bottom:20px">
+        <div class="col-md-8">Time to CBC</div>
+        <div class="col-md-4">{{cbcTraffic.duration.text}}</div>
+    </div>
+    <div class="row" *ngIf="ccaTraffic" style="padding-bottom:20px">
+        <div class="col-md-8">Time to CCA</div>
+        <div class="col-md-4">{{ccaTraffic.duration.text}}</div>
+    </div>
+</div>

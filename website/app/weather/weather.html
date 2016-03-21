@@ -1,0 +1,22 @@
+<h3 style="padding-bottom:12px">Weather & Forecast</h3>
+<img *ngIf="!weather" src="resources/loading.gif" />
+<div *ngIf="weather" style="padding:10px">
+    <div class="row" style="padding-bottom:15px;font-weight: bold;">
+        <div class="col-md-4">Today</div>
+        <div class="col-md-4"><span style="font-size:2em" class="{{iconTable[weather.weather[0].icon]}}"></span></div>
+        <div class="col-md-4">
+            <p>{{weather.main.temp - 273 | number:'1.0-0'}} &#8451; <span class="opague">({{weather.main.temp_max - 273 | number:'1.0-0'}} / {{weather.main.temp_min - 273 | number:'1.0-0'}})</span> </p>
+            <p>Wind: {{weather.wind.speed}} m/s</p>
+        </div>
+    </div>
+
+    <hr class="opague" />
+
+    <div *ngIf="forecast" *ngFor="#item of forecast.list">
+        <div *ngIf="item" class="row">
+            <div class="col-md-4">{{displayDate(item.dt)}}</div>
+            <div class="col-md-4"><span class="{{iconTable[item.weather[0].icon]}}"></span></div>
+            <div class="col-md-4">{{item.temp.max - 273 | number:'1.0-0'}} <span class="opague">/ {{item.temp.min- 273 | number:'1.0-0'}} &#8451;</span></div>
+        </div>
+    </div>
+</div>

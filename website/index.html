@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>document.write('<base href="' + document.location + '" />');</script>
+    <title>Raspberry PI mirror</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="resources/css/styles.css">
+    <link rel="stylesheet" href="resources/css/weather-icons.css">
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/4.0.0/normalize.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+
+    <!-- IE required polyfills, in this exact order -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.0/es6-shim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.20/system-polyfills.js"></script>
+
+    <script src="https://code.angularjs.org/2.0.0-beta.11/angular2-polyfills.js"></script>
+    <script src="https://code.angularjs.org/tools/system.js"></script>
+    <script src="https://npmcdn.com/typescript@1.8.9/lib/typescript.js"></script>
+    <script src="https://code.angularjs.org/2.0.0-beta.11/Rx.js"></script>
+    <script src="https://code.angularjs.org/2.0.0-beta.11/angular2.dev.js"></script>
+    <script src="https://code.angularjs.org/2.0.0-beta.11/router.dev.js"></script>
+    <script src="https://code.angularjs.org/2.0.0-beta.11/http.dev.js"></script>
+
+    <script src="http://momentjs.com/downloads/moment.min.js"></script>
+    <script src="resources/lib/ical.min.js"></script>
+    <script>
+      System.config({
+        transpiler: 'typescript',
+        typescriptOptions: { emitDecoratorMetadata: true },
+        packages: {'app': {defaultExtension: 'ts'}}
+      });
+      System.import('app/main')
+            .then(null, console.error.bind(console));
+    </script>
+</head>
+
+<body>
+<my-app>
+    <div class="centerDiv">
+        <img src="resources/loading.gif" />
+    </div>
+
+</my-app>
+</body>
+</html>
+
