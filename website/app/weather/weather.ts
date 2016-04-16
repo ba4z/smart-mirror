@@ -37,12 +37,22 @@ export class WeatherComponent implements OnInit {
     }
 
     ngOnInit() {
+        var interval = 3600000 //one hour
+
         var that = this;
-        this.getForecast();
+        that.getForecast();
+        setInterval(function() {
+            console.log("Getting forecast");
+            that.getForecast();
+        }, interval);
 
         setTimeout(function(){
             that.getWeather();
-        }, 500);
+            setInterval(function() {
+                console.log("Getting weather");
+                that.getWeather();
+            }, interval);
+        }, 1000 );
 
 
         this.iconTable = {

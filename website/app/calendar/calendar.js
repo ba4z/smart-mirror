@@ -26,8 +26,12 @@ System.register(['angular2/core', 'app/calendar/calendar.service'], function(exp
                     this._calendarService = _calendarService;
                 }
                 CalendarComponent.prototype.ngOnInit = function () {
-                    console.log("calendar inited");
+                    var interval = 3600000; //one hour
                     this.getCalendar();
+                    var that = this;
+                    setInterval(function () {
+                        that.getCalendar();
+                    }, interval);
                 };
                 CalendarComponent.prototype.getCalendar = function () {
                     var _this = this;

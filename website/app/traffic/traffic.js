@@ -25,12 +25,28 @@ System.register(['angular2/core', 'app/traffic/traffic.service'], function(expor
                 function TrafficComponent(_trafficService) {
                     this._trafficService = _trafficService;
                 }
-                TrafficComponent.prototype.ngOnInit = function () {
+                TrafficComponent.prototype.getCBCTraffic = function () {
                     var _this = this;
                     var that = this;
                     this._trafficService.getTraffic("cbc").subscribe(function (res) { return _this.cbcTraffic = res.rows[0].elements[0]; }, function (error) { return console.error(error); });
+                };
+                TrafficComponent.prototype.getCCATraffic = function () {
+                    var that = this;
+                    this._trafficService.getTraffic("cca").subscribe(function (res) { return that.ccaTraffic = res.rows[0].elements[0]; }, function (error) { return console.error(error); });
+                };
+                TrafficComponent.prototype.ngOnInit = function () {
+                    var interval = 3600000; //one hour
+                    var that = this;
+                    this.getCBCTraffic();
+                    setInterval(function () {
+                        that.getCBCTraffic();
+                    }, interval);
+                    var that = this;
                     setTimeout(function () {
-                        that._trafficService.getTraffic("cca").subscribe(function (res) { return that.ccaTraffic = res.rows[0].elements[0]; }, function (error) { return console.error(error); });
+                        that.getCCATraffic();
+                        setInterval(function () {
+                            that.getCCATraffic();
+                        }, interval);
                     }, 500);
                 };
                 TrafficComponent = __decorate([

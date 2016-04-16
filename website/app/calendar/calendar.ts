@@ -15,8 +15,13 @@ export class CalendarComponent implements OnInit {
     public calendarItems;
 
     ngOnInit() {
-        console.log("calendar inited");
+        var interval = 3600000 //one hour
         this.getCalendar();
+
+        var that = this;
+        setInterval(function() {
+            that.getCalendar();
+        }, interval);
     }
 
     getCalendar() {
